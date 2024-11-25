@@ -9,6 +9,9 @@ while (diag.nextNode()) {
   var transactions = Number(diagNode.stats["servlet.transactions"]);
   var loggedUsers = Number(diagNode.stats.sessionsummary["@logged_in"]);
   var status = diagNode.status == "online" ? "online" : "offline";
+  var jvmUptime = diagNode.stats['jvm.time_friendly'];
+  var schedulerRunning = diagNode.stats['scheduler.is.running'];
+
 
   // Calculate record count
   gr.query();
@@ -24,6 +27,8 @@ while (diag.nextNode()) {
 
   // Insert a new record
   gr.newRecord();
+  gr.u_scheduler_running = schedulerRunning;
+  gr.u_jvm_uptime = jvmUptime;
   gr.u_avg_transactions = avgTransactions;
   gr.u_avg_errors = avgErrors;
   gr.u_node_name = nodeName;
