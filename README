@@ -1,0 +1,10 @@
+// In order for this to work, you need to create a custom table called 'diagnostics page'
+
+// This table will need the following columns:
+//scheduler running
+//jvm uptime
+//avg transactions
+//avg errors
+//transactions
+//logged in users
+//status
